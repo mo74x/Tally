@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
 import { BullModule } from '@nestjs/bullmq';
-//import { SettlementService } from './settlement.service';
+import { SettlementService } from './settlement.service';
 import { SettlementProcessor } from './settlement.processor';
+import { SettlementController } from './settlement.controller';
 import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
@@ -19,7 +20,8 @@ import { PrismaModule } from '../prisma/prisma.module';
       name: 'settlement-queue',
     }),
   ],
-  providers: [SettlementProcessor],
-  exports: [],
+  controllers: [SettlementController],
+  providers: [SettlementProcessor, SettlementService],
+  exports: [SettlementService],
 })
 export class SettlementModule {}
