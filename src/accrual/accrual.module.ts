@@ -1,4 +1,8 @@
 import { Module } from '@nestjs/common';
+import { AccrualService } from './accrual.service';
 
-@Module({})
+@Module({
+  providers: [AccrualService],
+  exports: [AccrualService],
+})
 export class AccrualModule {}
